@@ -3,7 +3,7 @@ name: Train Movie Recommender Model with DNN
 on: [push]
 
 jobs:
-  run:
+  Train_Movie_Model:
     runs-on: [ubuntu-latest]
   
     steps:
