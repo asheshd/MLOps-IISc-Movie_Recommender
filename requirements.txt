@@ -3,5 +3,5 @@ pandas
 boto3
 modelstore
 sklearn
-tensorflow=1.4
+tensorflow=1.4.0
 keras=2.1.3
