@@ -131,33 +131,14 @@ x = tf.keras.layers.Activation(activation='softmax')(x)
 model = tf.keras.models.Model(inputs=[user,movie], outputs=x)
 model.compile(optimizer='sgd', loss=tf.keras.losses.SparseCategoricalCrossentropy(), metrics=['accuracy'])
 
-# def root_mean_squared_error(y_true, y_pred):
-#         return K.sqrt(K.mean(K.square(y_pred - y_true))) 
 
-# model.compile(optimizer='sgd', loss=root_mean_squared_error, metrics=['accuracy'])
-
-from IPython.display import SVG
-from keras.utils.vis_utils import model_to_dot
-
-SVG(model_to_dot(model,  show_shapes=True, show_layer_names=True, rankdir='HB').create(prog='dot', format='svg'))
-
-model.summary()
+# from IPython.display import SVG
+# from keras.utils.vis_utils import model_to_dot
+# SVG(model_to_dot(model,  show_shapes=True, show_layer_names=True, rankdir='HB').create(prog='dot', format='svg'))
+# model.summary()
 
 reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.75, patience=3, min_lr=0.000001, verbose=1)
 data = model.fit(x = x_train_mat, y = y_train, batch_size=128, epochs=2, verbose=1, validation_data=(x_test_mat, y_test) ,shuffle=True,callbacks=[reduce_lr])
-
-plt.plot(data.history["loss"][5:])
-plt.plot(data.history["val_loss"][5:])
-plt.title("model loss")
-plt.ylabel("loss")
-plt.xlabel("epoch")
-plt.legend(["train", "test"], loc="upper left")
-plt.show()
-
-# from tensorflow.keras.models import Sequential, save_model, load_model
-
-# export_path = 'movie_model/1/'
-# tf.saved_model.save(model, os.path.join('/content/',export_path))
 
 model.save('movie_model.h5')
 
@@ -171,37 +152,5 @@ meta_data = model_store.upload(domain, model=model)
 
 print(json.dumps(meta_data, indent=4))
 
-print ("Model generation is done. It is saved as well. Now, consume it elsewhere.")
+print ("Model saved successfully in S3.")
 
-# from google.colab import files
-# download_path = '/content/movie_model.zip'
-# !zip -r {download_path} {export_path}
-
-"""# New Code to consume model and make movie prediction/recommendation for a given user"""
-
-print ("A new code.. This will use trained model and make prediction")
-
-# download_path = '/content/movie_model.zip'
-# files.download(download_path)
-
-def recommender_system(user_id, model, n_movies):
-
-  encoded_user_id = user_encoder.transform([user_id])
-
-  seen_movies = list(master_dataset[master_dataset['user id'] == user_id]['movie'])
-  unseen_movies = [i for i in range(min(master_dataset['movie']), max(master_dataset['movie'])+1) if i not in seen_movies]
-  
-  model_input = [np.asarray(list(encoded_user_id)*len(unseen_movies)), np.asarray(unseen_movies)]
-  predicted_ratings = model.predict(model_input)
-  
-  predicted_ratings = np.max(predicted_ratings, axis=1)
-  sorted_index = np.argsort(predicted_ratings)[::-1]
-  recommended_movies = movie_encoder.inverse_transform(sorted_index)
-  
-  
-  print("Top", n_movies, "Movie recommendations for the User ", user_id, "are: ")
-  pprint(list(recommended_movies[:n_movies]))
-
-user_id= int(input("Enter user id: "))
-n_movies = int(input("Enter number of movies to be recommended: "))
-recommender_system(user_id,model,n_movies)
