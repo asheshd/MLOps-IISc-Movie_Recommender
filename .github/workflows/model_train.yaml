@@ -9,15 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: iterative/setup-cml@v1
-
-      - uses: iterative/setup-dvc@v1
-
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: cml
+      - name: train_model
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
