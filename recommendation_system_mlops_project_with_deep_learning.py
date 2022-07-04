@@ -7,20 +7,16 @@ Original file is located at
     https://colab.research.google.com/drive/1JP9TbjwQLO4IHO7_snjl8OAEBITs9sr6
 """
 
-!pip install modelstore
-!pip install boto3
-
 import os
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
 import tensorflow as tf
 import keras
 from keras import backend as K
-from pprint import pprint
 
 import requests
 import zipfile
