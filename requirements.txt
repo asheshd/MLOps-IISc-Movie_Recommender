@@ -3,4 +3,5 @@ pandas
 boto3
 modelstore
 sklearn
-tensorflow
+tensorflow=1.4
+keras=2.1.3
