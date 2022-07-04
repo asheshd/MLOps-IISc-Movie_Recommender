@@ -142,15 +142,15 @@ data = model.fit(x = x_train_mat, y = y_train, batch_size=128, epochs=2, verbose
 
 model.save('movie_model.h5')
 
-os.environ['aws_access_key_id'] = "X"
-os.environ['aws_access_key_id'] = "X"
+# os.environ['aws_access_key_id'] = "X"
+# os.environ['aws_access_key_id'] = "X"
 
-model_store = ModelStore.from_aws_s3("iiscdvc")
+# model_store = ModelStore.from_aws_s3("iiscdvc")
 
-domain = "prod-movie-model"
-meta_data = model_store.upload(domain, model=model)
+# domain = "prod-movie-model"
+# meta_data = model_store.upload(domain, model=model)
 
-print(json.dumps(meta_data, indent=4))
+# print(json.dumps(meta_data, indent=4))
 
 print ("Model saved successfully in S3.")
 
