@@ -136,17 +136,17 @@ model.compile(optimizer='sgd', loss=tf.keras.losses.SparseCategoricalCrossentrop
 reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.75, patience=3, min_lr=0.000001, verbose=1)
 data = model.fit(x = x_train_mat, y = y_train, batch_size=128, epochs=2, verbose=1, validation_data=(x_test_mat, y_test) ,shuffle=True,callbacks=[reduce_lr])
 
-model.save('movie_model.h5')
+# model.save('movie_model.h5')
 
 # os.environ['aws_access_key_id'] = "X"
 # os.environ['aws_access_key_id'] = "X"
 
-# model_store = ModelStore.from_aws_s3("iiscdvc")
+model_store = ModelStore.from_aws_s3("iiscmlops")
 
-# domain = "prod-movie-model"
-# meta_data = model_store.upload(domain, model=model)
+domain = "prod-movie-model"
+meta_data = model_store.upload(domain, model=model)
 
-# print(json.dumps(meta_data, indent=4))
+print(json.dumps(meta_data, indent=4))
 
 print ("Model saved successfully in S3.")
 
