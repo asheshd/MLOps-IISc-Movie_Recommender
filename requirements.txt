@@ -4,4 +4,3 @@ boto3
 modelstore
 sklearn
 tensorflow
-keras
