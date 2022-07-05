@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/asheshd/MLOps-IISc-Movie_Recommender">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/42042450/177300200-09b72246-f4b3-492b-a79d-38b245726d10.png" alt="Logo" width="80" height="80">
   </a>
 
 <h2 align="center"> Recommendation System MLOps Project with Deep Learning for IISc</h2>
@@ -182,7 +182,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Ashesh Deep - asheshdeep@iisc.ac.in
+* Ashesh Deep - asheshdeep@iisc.ac.in
+* Shailesh Joshi - shaileshj@iisc.ac.in
 
 Project Link: [https://github.com/asheshd/MLOps-IISc-Movie_Recommender](https://github.com/asheshd/MLOps-IISc-Movie_Recommender)
 
@@ -193,6 +194,7 @@ Project Link: [https://github.com/asheshd/MLOps-IISc-Movie_Recommender](https://
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* Prof. Sashikumaar Ganeshan
+* Thivin Anandh
 
 <p align="right">(<a href="#top">back to top</a>)</p>
