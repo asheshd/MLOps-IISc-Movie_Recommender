@@ -139,7 +139,7 @@ data = model.fit(x = x_train_mat, y = y_train, batch_size=128, epochs=50, verbos
 
 model_store = ModelStore.from_aws_s3("iiscmlops")
 
-domain = "test-movie-model"
+domain = "pre-prod-movie-model"
 meta_data = model_store.upload(domain, model=model)
 
 print(json.dumps(meta_data, indent=4))
