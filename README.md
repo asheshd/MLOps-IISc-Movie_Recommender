@@ -42,14 +42,13 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#results">Usage</a></li>
+    <li><a href="#results">Results</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -98,7 +97,6 @@ https://github.com/asheshd/MLOps-IISc-Proj-UI - A web UI project to serve model 
 * [ModelStore](https://pypi.org/project/modelstore/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
